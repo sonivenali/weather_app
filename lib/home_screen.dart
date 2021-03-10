@@ -24,7 +24,27 @@ class _HomeScreenState extends State<HomeScreen> {
                     .image),
           ),
         ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Stack(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 100),
+                      child: Text(
+                        'Choose your Location',
+                        style: Theme.of(context).textTheme.title,
+                      ),
+                    ),
+                  ],
+                ),
 
+
+              ])),
+        )
       ],
     );
   }
