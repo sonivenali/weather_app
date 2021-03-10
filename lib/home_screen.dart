@@ -41,7 +41,26 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-
+                Align(
+                  alignment: AlignmentDirectional.center,
+                  child: SelectState(
+                    onCountryChanged: (value) {
+                      setState(() {
+                        countryValue = value;
+                      });
+                    },
+                    onStateChanged: (value) {
+                      setState(() {
+                        stateValue = value;
+                      });
+                    },
+                    onCityChanged: (value) {
+                      setState(() {
+                        cityValue = value;
+                      });
+                    },
+                  ),
+                ),
 
               ])),
         )
