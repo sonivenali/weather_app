@@ -61,7 +61,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                 ),
-
+                Align(
+                  alignment: AlignmentDirectional.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 50),
+                    child: FlatButton(minWidth: 170,height: 50,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50)),
+                      onPressed: () {},
+                      child: Text(
+                        "Proceed",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      color: Colors.white,
+                    ),
+                  ),
+                )
               ])),
         )
       ],
