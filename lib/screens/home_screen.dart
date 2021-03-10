@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:country_state_city_picker/country_state_city_picker.dart';
+import 'package:weatherapp/screens/weather_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -65,10 +66,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   alignment: AlignmentDirectional.bottomCenter,
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 50),
-                    child: FlatButton(minWidth: 170,height: 50,
+                    child: FlatButton(
+                      minWidth: 170,
+                      height: 50,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WeatherScreen("Bangalore")),
+                        );
+                      },
                       child: Text(
                         "Proceed",
                         style: TextStyle(color: Colors.black),
