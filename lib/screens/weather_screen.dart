@@ -128,8 +128,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
               ),
               Row(
                 children: [
-                  buildTile("WIND", data.wind.speed.toString()),
-                  buildTile("HUMIDITY", data.main.humidity.toString()),
+                  buildTile("WIND", "E"+data.wind.speed.toString()+" kph"),
+                  buildTile("HUMIDITY", data.main.humidity.toString()+ " %"),
                 ],
               ),
               Divider(
@@ -138,8 +138,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
               ),
               Row(
                 children: [
-                  buildTile("FEELS LIKE", data.main.feelsLike.toString()),
-                  buildTile("PRESSURE", data.main.pressure.toString()),
+                  buildTile("FEELS LIKE", data.main.feelsLike.toString()+ "\u00B0"),
+                  buildTile("PRESSURE", data.main.pressure.toString()+" hPa"),
                 ],
               ),
               Divider(
@@ -148,7 +148,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
               ),
               Row(
                 children: [
-                  buildTile("VISIBILITY", data.visibility.toString()),
+                  buildTile("VISIBILITY", (data.visibility/1000).toString()+ " Km"),
                   buildTile("CLOUDS", data.clouds.all.toString()),
                 ],
               ),
