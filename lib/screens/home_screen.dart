@@ -11,6 +11,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String countryValue;
   String stateValue;
   String cityValue;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         Scaffold(
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.transparent,key: _scaffoldKey,
           body: Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Stack(children: [
@@ -65,18 +66,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 Align(
                   alignment: AlignmentDirectional.bottomCenter,
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 50),
+                    padding: const EdgeInsets.only(bottom: 100),
                     child: FlatButton(
                       minWidth: 170,
                       height: 50,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => WeatherScreen(cityValue)),
-                        );
+                       if(cityValue!= null && cityValue.isNotEmpty){
+                         Navigator.push(
+                           context,
+                           MaterialPageRoute(
+                               builder: (context) => WeatherScreen(cityValue)),
+                         );
+                       }else{
+                         _scaffoldKey.currentState
+                             .showSnackBar(new SnackBar(content: new Text("Invalid credentials")));
+                       }
                       },
                       child: Text(
                         "Proceed",
