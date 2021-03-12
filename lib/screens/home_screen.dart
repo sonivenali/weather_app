@@ -21,8 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
           decoration: BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover,
-                image: Image.network(
-                        "https://www.setaswall.com/wp-content/uploads/2017/09/Minimalist-Blue-Mountains-2x-Wallpaper-640-x-960.jpg")
+                image: Image.asset(
+                    "assets/dayview.jpg")
                     .image),
           ),
         ),

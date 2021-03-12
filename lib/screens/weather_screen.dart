@@ -23,8 +23,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
           decoration: BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover,
-                image: Image.network(
-                        "https://i.pinimg.com/originals/b5/bd/5d/b5bd5d41fca3cc3c930bab7284efc517.jpg")
+                image: Image.asset(
+                        "assets/nightview.jpg")
                     .image),
           ),
         ),
