@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:weatherapp/screens/weather_screen.dart';
+
+import 'home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -6,6 +10,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    checkAndGoToNextPage();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,5 +39,25 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
+  }
+
+
+  void checkAndGoToNextPage() async{
+    await Future.delayed(Duration(seconds: 2));
+    final prefs = await SharedPreferences.getInstance();
+    String city = prefs.getString("city");
+    if(city==null){
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => HomeScreen()),
+      );
+    }else{
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => WeatherScreen(city)),
+      );
+    }
   }
 }

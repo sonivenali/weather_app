@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:country_state_city_picker/country_state_city_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weatherapp/screens/weather_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,13 +22,12 @@ class _HomeScreenState extends State<HomeScreen> {
           decoration: BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover,
-                image: Image.asset(
-                    "assets/dayview.jpg")
-                    .image),
+                image: Image.asset("assets/dayview.jpg").image),
           ),
         ),
         Scaffold(
-          backgroundColor: Colors.transparent,key: _scaffoldKey,
+          backgroundColor: Colors.transparent,
+          key: _scaffoldKey,
           body: Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Stack(children: [
@@ -72,17 +72,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 50,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)),
-                      onPressed: () {
-                       if(cityValue!= null && cityValue.isNotEmpty){
-                         Navigator.push(
-                           context,
-                           MaterialPageRoute(
-                               builder: (context) => WeatherScreen(cityValue)),
-                         );
-                       }else{
-                         _scaffoldKey.currentState
-                             .showSnackBar(new SnackBar(content: new Text("Invalid credentials")));
-                       }
+                      onPressed: () async {
+                        if (cityValue != null && cityValue.isNotEmpty) {
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.setString("city", cityValue);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => WeatherScreen(cityValue)),
+                          );
+                        } else {
+                          _scaffoldKey.currentState.showSnackBar(new SnackBar(
+                              content: new Text("Invalid credentials")));
+                        }
                       },
                       child: Text(
                         "Proceed",

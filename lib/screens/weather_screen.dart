@@ -75,7 +75,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       fontWeight: FontWeight.w300)),
               Padding(
                 padding: const EdgeInsets.only(left: 32),
-                child: Text(data.main.temp.round().toString() + "\u00B0",
+                child: Text(data.main.temp + "\u00B0",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 90,
