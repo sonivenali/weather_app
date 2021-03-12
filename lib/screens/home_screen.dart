@@ -76,10 +76,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         if (cityValue != null && cityValue.isNotEmpty) {
                           final prefs = await SharedPreferences.getInstance();
                           prefs.setString("city", cityValue);
-                          Navigator.push(
+                          Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => WeatherScreen(cityValue)),
+                                  (Route<dynamic> route) => false
                           );
                         } else {
                           _scaffoldKey.currentState.showSnackBar(new SnackBar(

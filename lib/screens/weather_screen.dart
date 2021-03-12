@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:weatherapp/models/weather_data.dart';
 import 'package:weatherapp/services/services.dart';
 
+import 'home_screen.dart';
+
 class WeatherScreen extends StatefulWidget {
   final String cityValue;
 
@@ -54,6 +56,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
         centerTitle: false,
         elevation: 0,
         backgroundColor: Colors.transparent,
+        actions: [IconButton(icon: Icon(Icons.edit), onPressed: (){ Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => HomeScreen()),
+        );})],
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16),
